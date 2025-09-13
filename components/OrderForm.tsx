@@ -4,13 +4,15 @@ import { Card } from './ui/Card';
 import { Input } from './ui/Input';
 import { CameraIcon } from './icons/CameraIcon';
 import { TrashIcon } from './icons/TrashIcon';
+import { ResetIcon } from './icons/ResetIcon';
 
 interface OrderFormProps {
     orderDetails: OrderDetails;
     setOrderDetails: React.Dispatch<React.SetStateAction<OrderDetails>>;
+    onReset: () => void;
 }
 
-export const OrderForm: React.FC<OrderFormProps> = ({ orderDetails, setOrderDetails }) => {
+export const OrderForm: React.FC<OrderFormProps> = ({ orderDetails, setOrderDetails, onReset }) => {
     
     const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
@@ -90,10 +92,11 @@ export const OrderForm: React.FC<OrderFormProps> = ({ orderDetails, setOrderDeta
                         </select>
                     </div>
                 </div>
-                 <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
                     <Input label="Diamond Wt (ct)" name="diaWt" value={orderDetails.diaWt} onChange={handleChange} placeholder="0.00" type="number" />
                     <Input label="Diamond Quality" name="diaQuality" value={orderDetails.diaQuality} onChange={handleChange} placeholder="e.g., VVS, G-H" />
-                    <Input label="Diamond Price" name="diaPrice" value={orderDetails.diaPrice} onChange={handleChange} placeholder="Amount (Optional)" type="number" />
+                    <Input label="Gold Price" name="goldPrice" value={orderDetails.goldPrice} onChange={handleChange} placeholder="Optional" type="number" />
+                    <Input label="Diamond Price" name="diaPrice" value={orderDetails.diaPrice} onChange={handleChange} placeholder="Optional" type="number" />
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                     <Input label="Size" name="size" value={orderDetails.size} onChange={handleChange} placeholder="e.g., 7 US, 14 INT" />
@@ -138,6 +141,17 @@ export const OrderForm: React.FC<OrderFormProps> = ({ orderDetails, setOrderDeta
                             </label>
                         )}
                     </div>
+                </div>
+
+                <div className="border-t border-gray-700 pt-4 mt-4">
+                    <button
+                        type="button"
+                        onClick={onReset}
+                        className="w-full flex items-center justify-center gap-2 bg-red-600 text-white font-bold py-2.5 px-4 rounded-lg shadow-lg hover:bg-red-700 transition-all duration-300 transform hover:scale-105"
+                    >
+                        <ResetIcon />
+                        Reset Form
+                    </button>
                 </div>
             </form>
         </Card>

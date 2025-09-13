@@ -11,6 +11,7 @@ export interface OrderDetails {
   diaWt: string;
   diaQuality: string;
   diaPrice: string;
+  goldPrice: string;
   size: string;
   orderDate: string;
   deliveryDate: string;

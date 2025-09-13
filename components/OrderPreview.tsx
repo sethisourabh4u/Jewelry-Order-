@@ -16,7 +16,7 @@ const DetailItem: React.FC<{ label: string; value?: string | null; isEmphasized?
 
 export const OrderPreview: React.FC<OrderPreviewProps> = ({ orderDetails, viewMode }) => {
     const { 
-        party, orderTo, design, goldWt, goldKt, goldColour, diaWt, diaQuality, diaPrice,
+        party, orderTo, design, goldWt, goldKt, goldColour, diaWt, diaQuality, diaPrice, goldPrice,
         size, orderDate, deliveryDate, comments, images
     } = orderDetails;
 
@@ -57,9 +57,11 @@ export const OrderPreview: React.FC<OrderPreviewProps> = ({ orderDetails, viewMo
                     <DetailItem label="Dia Quality" value={diaQuality} />
                     <DetailItem label="Size" value={size} />
                 </div>
-                 {diaPrice && viewMode !== 'orderTo' && (
-                     <div className="border-t border-gray-700 pt-3">
-                        <DetailItem label="Diamond Price" value={diaPrice} />
+                
+                {(goldPrice || diaPrice) && viewMode !== 'orderTo' && (
+                     <div className="grid grid-cols-2 gap-x-4 gap-y-3 border-t border-gray-700 pt-3">
+                        {goldPrice && <DetailItem label="Gold Price" value={goldPrice} />}
+                        {diaPrice && <DetailItem label="Diamond Price" value={diaPrice} />}
                     </div>
                 )}
                 

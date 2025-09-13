@@ -19,6 +19,7 @@ const getInitialOrderState = (): OrderDetails => ({
     diaWt: '',
     diaQuality: '',
     diaPrice: '',
+    goldPrice: '',
     size: '',
     orderDate: new Date().toISOString().split('T')[0],
     deliveryDate: '',
@@ -112,9 +113,7 @@ const App: React.FC = () => {
     };
 
     const handleReset = () => {
-        if (window.confirm('Are you sure you want to clear the form? All entered data will be lost.')) {
-            setOrderDetails(getInitialOrderState());
-        }
+        setOrderDetails(getInitialOrderState());
     };
 
 
@@ -132,7 +131,11 @@ const App: React.FC = () => {
 
                 <main className="grid grid-cols-1 lg:grid-cols-5 gap-6">
                     <div className="lg:col-span-3">
-                        <OrderForm orderDetails={orderDetails} setOrderDetails={setOrderDetails} />
+                        <OrderForm 
+                            orderDetails={orderDetails} 
+                            setOrderDetails={setOrderDetails} 
+                            onReset={handleReset} 
+                        />
                     </div>
                     
                     <div className="lg:col-span-2 space-y-4">
