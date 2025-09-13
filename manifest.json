@@ -1,0 +1,16 @@
+{
+  "short_name": "Jewelry Orders",
+  "name": "Jewelry Order Creator",
+  "icons": [
+    {
+      "src": "/vite.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#111827",
+  "background_color": "#111827",
+  "description": "A web application to create and manage jewelry orders."
+}
