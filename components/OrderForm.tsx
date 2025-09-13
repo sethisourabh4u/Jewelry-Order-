@@ -58,7 +58,7 @@ export const OrderForm: React.FC<OrderFormProps> = ({ orderDetails, setOrderDeta
                 <Input label="Design Code / Name" name="design" value={orderDetails.design} onChange={handleChange} placeholder="Design Code or Name" />
                 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-                    <Input label="Gold Wt (gm)" name="goldWt" value={orderDetails.goldWt} onChange={handleChange} placeholder="0.00" type="number" />
+                    <Input label="Gold Wt (gm)" name="goldWt" value={orderDetails.goldWt} onChange={handleChange} placeholder="e.g., 4-6" type="text" />
                      <div>
                         <label htmlFor="goldKt" className="block text-xs font-medium text-gray-400 uppercase mb-1">Gold Karat</label>
                         <select
